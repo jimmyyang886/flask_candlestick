@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>型態分析結果(DoubleBottom/DoubleTop)</title>
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    <style>
+		.div2{
+		width=540px;
+		height=620px;
+		margin=10px 20px;
+		padding=10px 20px;
+		border:#930;
+		}
+	</style>
+  </head>	
+
+  <body>
+	 <div class="div2">
+	  <h1>DoubleBottom/DoubleTop Search Results</h1>  
+	</div>
+
+
+  <table width="500" height="80" border="1">
+    <thead>
+        <tr>
+            {% for col in colnames %}
+            <th>{{ col }}</th>
+            {% endfor %}
+			<th>KLine</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for record in records %}
+        <tr>
+            {% for col in colnames %}
+            <td> {{ record[col] }}</td>
+            {% endfor %}
+			<td><a href="/?sid={{record['sid']}}&start={{record['start']}}&end={{record['end']}}&ctype={{record['ctype']}}" >KLine</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+   </table>
+   
+	  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+	 
+  </body>  
+</html>

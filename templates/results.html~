@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>上市公司代碼K線圖查詢系統</title>
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	
+	
+    <style>
+		.div2{
+		width=540px;
+		height=620px;
+		margin=10px 20px;
+		padding=10px 20px;
+		border:#930;
+		}
+	</style>
+  </head>
+  
+  <body>
+  
+	<form id="form1" onsubmit="return false" method="post" action="#">
+		<div class="container">
+		 <div class="div2">
+		  <h1>Double Bottom Found</h1>
+		  <br>
+		  <input type='submit' value="query" onclick="getData_DB()">	  
+		</div>
+	</form>
+	
+	<div id="kline_DB" style="width: 800px;height:400px;"></div>
+	
+  
+	
+  </body>
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/post.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/echarts.min.js') }}"></script>
+</html>

@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>上市公司代碼K線圖查詢系統</title>
+	
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	
+  <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/post_datasets.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/echarts.min.js') }}"></script>
+    <style>
+		.div2{
+		width=540px;
+		height=620px;
+		margin=10px 20px;
+		padding=10px 20px;
+		border:#930;
+		}
+	</style>
+  </head>
+  
+  <body>
+	<form id="form1" onsubmit="return false" method="post" action="#">
+		<div class="container">
+		 <div class="div2">
+		  <h1>上市公司代碼K線圖查詢系統</h1>
+		  <br>
+		  <input type="text" name="sid" id="sid" placeholder="請輸入股市代號" value="{{ sid }}">
+		  <input type='submit' value="query" onclick="getData()">
+		  
+		</div>
+	</form>
+	
+	<div id="kline" style="width: 800px;height:400px;"></div>
+	
+    <br>	
+	
+	<form  name="time_interval" id="form2" onsubmit="return false" method="post" action="#">
+		<div class="container">
+		 <div class="div2">
+		  <h5>抓取區間，定義Class，產生DataSet</h5>
+		  <br>
+		  <input type="text" name="start" id="start" placeholder="Start Time" value="{{ start }}">
+		  <input type="text" name="end" id="end" placeholder="End Time" value="{{ end }}">
+		  <select id="classtype" name="classtype">
+		　<option value="DoubleBot">DoubleBot</option>
+		　<option value="DoubleTop">DoubleTop</option>
+		  <!--
+		　<option value="HeadShoulderBot">HeadShoulderBot</option>
+		　<option value="HeadShoulderTop">HeadShoulderTop</option>
+		  <option value="CongestionUp">CongestionUp</option>
+		  <option value="CongestionUp">CongestionDown</option>	
+		  -->
+		  </select>
+		  <input type='submit' value="genDataset" onclick="genDataset()">
+		</div>
+		</div>
+	</form>
+	<div id="kline_dataset" style="width: 800px;height:400px;"></div>
+	<br>
+	
+  </body>
+</html>
